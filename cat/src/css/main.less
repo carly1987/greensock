@@ -1,0 +1,332 @@
+@import "base";
+@import "lesshat";
+
+body{
+	font-size: 100%;
+	background: #8ACAE2;
+}
+.cat{
+	position: absolute;
+	left: 50%;
+	bottom: 100%;
+	width: 200px;
+	height: 200px;
+	.cat-mask{
+		position: relative;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		.cat-list{
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 1600px;
+			height: 436px;
+			background-image: url('@{imgPath}cats.png');
+		}
+	}
+}
+.hide{
+	display: none;
+}
+.content{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	bottom: 0px;
+	overflow: hidden;
+}
+.page{
+	width: 100%;
+	left: 0;
+	top:0;
+}
+.init{.content;
+	.name{
+		position: absolute;
+		left: 50%;
+		top:10px;
+		background: url('@{imgPath}name.png') no-repeat center center;
+		background-size: 430px auto;
+		width: 430px; height: 332px;
+		margin: 0 0 0 -215px;
+		z-index: 1;
+	}
+	.cat{
+		bottom: 0; z-index: 2; left: 40%; width: 600px; height: 600px;
+		.cat-mask{
+			width: 600px; height: 600px;
+			.cat-list{
+				width: 1200px; height: 574px;
+				background-image: url('@{imgPath}cat.png');
+			}
+		}
+		
+	}
+	.clound{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top:0; left: 0;
+		>div{
+			position: absolute;
+			display: block;
+			background-image: url('@{imgPath}clound.png');
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		.clound-big{
+			width: 838px;
+			height: 547px;
+			bottom: -200px;
+			left: 0;
+		}
+		.clound-small{
+			width: 152px;
+			height: 99px;
+			top:130px;
+			right: 35%;
+		}
+		.clound-tiny{
+			width: 20px;
+			height: 13px;
+			top: 60%;
+			right: 10%;
+		}
+	}
+	.codeGod{
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		width: 186px; height: 150px;
+		background: url('@{imgPath}codeGod.png') no-repeat center center;
+	}
+}
+.stage{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left: 0;
+	overflow: hidden;
+	.cat{
+		bottom: 80px; width: 120px; height: 120px; z-index: 1;
+		.cat-mask{
+			.cat-list{
+				background-size: 960px auto;
+			}
+		}
+
+	}
+	.wall{
+		position: absolute; width: 700%; left: -400%; height: 300px; top:10%; z-index: 1;
+		>div{
+			position: absolute; height: 100%; bottom: 0;
+			span{
+				display: block; width: 80px; height: 80px; position: absolute; bottom: 0; left: 0; text-align: center; line-height: 80px;
+			}
+			em{
+				display: block; width: 100%; height: 30px; line-height: 30px; position: absolute; bottom: 90px; left: 0; padding-left: 56px;
+				background: url('@{imgPath}fish.png') no-repeat center center; background-size: auto 15px; font-style: normal; color: #fff;
+			}
+		}
+		.wall-1{
+			width: 80px; left: 320px;
+			background: url('@{imgPath}squareA.png') no-repeat center bottom;
+		}
+		.wall-2{
+			width: 80px; left: 640px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+		.wall-3{
+			width: 80px; left: 720px;
+			background: url('@{imgPath}squareB.png') no-repeat center bottom;
+		}
+		.wall-4{
+			width: 80px; left: 800px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+		.wall-5{
+			width: 80px; left: 880px;
+			background: url('@{imgPath}squareA.png') no-repeat center bottom;
+		}
+		.wall-6{
+			width: 80px; left: 960px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+		.wall-7{
+			width: 80px; left: 800px; bottom: 190px;
+			background: url('@{imgPath}squareA.png') no-repeat center bottom;
+		}
+		.wall-8{
+			width: 80px; left: 5000px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+		.wall-9{
+			width: 80px; left: 5080px;
+			background: url('@{imgPath}squareB.png') no-repeat center bottom;
+		}
+		.wall-10{
+			width: 80px; left: 5160px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+		.wall-11{
+			width: 80px; left: 5240px;
+			background: url('@{imgPath}squareA.png') no-repeat center bottom;
+		}
+		.wall-12{
+			width: 80px; left: 5320px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+		.wall-13{
+			width: 80px; left: 5400px;
+			background: url('@{imgPath}squareA.png') no-repeat center bottom;
+		}
+		.wall-14{
+			width: 80px; left: 5480px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+		.wall-15{
+			width: 80px; left: 5560px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+		.wall-16{
+			width: 80px; left: 5640px;
+			background: url('@{imgPath}squareA.png') no-repeat center bottom;
+		}
+		.wall-17{
+			width: 80px; left: 5720px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+		.wall-18{
+			width: 80px; left: 5800px;
+			background: url('@{imgPath}squareA.png') no-repeat center bottom;
+		}
+		.wall-19{
+			width: 80px; left: 5880px;
+			background: url('@{imgPath}squareA.png') no-repeat center bottom;
+		}
+		.wall-20{
+			width: 80px; left: 6400px; bottom: 40px;
+			background: url('@{imgPath}wallA.png') no-repeat center bottom;
+		}
+	}
+	.pipe{
+		position: absolute; width: 700%; left: -400%; height: 400px; bottom:76px; z-index: 2;
+		>div{
+			position: absolute; height: 100%; bottom: 0; width: 168px;
+			background: url('@{imgPath}pipe.png') no-repeat;
+			>span{
+				display: block; width: 114px; height: 114px; position: absolute; left: 50%; margin-left: -57px;
+			}
+		}
+		.pipe-1{background-position: center 178px; left: 1500px;
+			>span{bottom: 222px; background: url('@{imgPath}ie.png') no-repeat center bottom;}
+		}
+		.pipe-2{background-position: center 120px; left: 2200px;
+			>span{bottom: 280px; background: url('@{imgPath}firework.png') no-repeat center bottom;}
+		}
+		.pipe-3{background-position: center 48px; left: 2800px;
+			>span{bottom: 352px; background: url('@{imgPath}chrome.png') no-repeat center bottom;}
+		}
+		.pipe-4{background-position: center 190px; left: 4100px;}
+	}
+	.clound{
+		width: 100%; height: 60px; position: absolute; top:5%; left: 0; z-index: 0;
+		>div{
+			position: absolute; height: 100%; top:0;
+		}
+		.clound-tiny{
+			background: url('@{imgPath}clound.png') no-repeat center center;
+			width: 80px; left: 50px;
+			background-size: 80px auto;
+		}
+		.clound-small{
+			background: url('@{imgPath}clound.png') no-repeat left center,url('@{imgPath}clound.png') no-repeat right center;
+			background-size: 80px auto;
+			width: 130px; left: 50%;
+		}
+		.clound-big{
+			background: url('@{imgPath}clound.png') no-repeat left center,url('@{imgPath}clound.png') no-repeat center center,url('@{imgPath}clound.png') no-repeat right center;
+			width: 172px; right: 100px;
+			background-size: 80px auto;
+			 
+		}
+	}
+	.tree{
+		width: 700%; height: 100px; position: absolute; bottom:76px; left: -400%; z-index: 0;
+		>div{
+			position: absolute;
+			bottom: 0; height: 100%;
+		}
+		.tree-1{
+			background: url('@{imgPath}grassA.png') no-repeat center bottom;
+			width: 126px;
+			left: 100px;
+		}
+		.tree-2{
+			background: url('@{imgPath}treeA.png') no-repeat center bottom;
+			width: 158px;
+			left: 250px;
+		}
+		.tree-3{
+			background: url('@{imgPath}treeB.png') no-repeat center bottom;
+			width: 114px;
+			left: 1350px;
+		}
+		.tree-4{
+			background: url('@{imgPath}grassB.png') no-repeat center bottom;
+			width: 85px;
+			left: 2400px;
+		}
+		.tree-5{
+			background: url('@{imgPath}treeA.png') no-repeat center bottom;
+			width: 158px;
+			left: 3450px;
+		}
+		.tree-6{
+			background: url('@{imgPath}grassA.png') no-repeat center bottom;
+			width: 126px;
+			left: 4300px;
+		}
+		.tree-7{
+			background: url('@{imgPath}grassB.png') no-repeat center bottom;
+			width: 85px;
+			left: 4500px;
+		}
+		.tree-8{
+			background: url('@{imgPath}treeA.png') no-repeat center bottom;
+			width: 158px;
+			left: 5500px;
+		}
+		.tree-9{
+			background: url('@{imgPath}treeB.png') no-repeat center bottom;
+			width: 114px;
+			left: 6500px;
+		}
+		.tree-10{
+			background: url('@{imgPath}grassA.png') no-repeat center bottom;
+			width: 126px;
+			left: 7800px;
+		}
+		.tree-11{
+			background: url('@{imgPath}grassB.png') no-repeat center bottom;
+			width: 85px;
+			left: 8000px;
+		}
+	}
+	.bg-stone{
+		background: url('@{imgPath}bg-stone.png');
+		height: 82px;
+		width: 100%;
+		background-size: 40px 40px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		z-index: 3;
+	}
+}
+
