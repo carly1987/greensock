@@ -69,6 +69,10 @@ ul,
 li {
   list-style: none;
 }
+em,
+i {
+  font-style: normal;
+}
 .hide {
   display: none;
 }
@@ -5942,6 +5946,7 @@ body {
   bottom: 100%;
   width: 200px;
   height: 200px;
+  margin-left: -100px;
 }
 .cat .cat-mask {
   position: relative;
@@ -5957,6 +5962,31 @@ body {
   width: 1600px;
   height: 436px;
   background-image: url('../img/cats.png');
+}
+.fish {
+  display: block;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  padding-left: 56px;
+  background: url('../img/fish.png') no-repeat center center;
+  background-size: auto 15px;
+  font-style: normal;
+  color: #fff;
+  z-index: -1;
+}
+.wallText {
+  display: block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  line-height: 80px;
 }
 .hide {
   display: none;
@@ -5974,13 +6004,52 @@ body {
   left: 0;
   top: 0;
 }
+.records {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 20px;
+  display: table;
+  padding: 0 20%;
+}
+.records p {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #fff;
+}
+.records p em {
+  display: block;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  padding-left: 56px;
+  background: url('../img/fish.png') no-repeat center center;
+  background-size: auto 15px;
+  font-style: normal;
+  color: #fff;
+  z-index: -1;
+  width: 100px;
+  position: static;
+  left: auto;
+  bottom: auto;
+  height: 20px;
+  line-height: 20px;
+  background-position: left center;
+  display: inline-block;
+}
 .init {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0px;
-  bottom: 0px;
-  overflow: hidden;
+  width: 200px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  margin: -190px 0 0 -100px;
 }
 .init .name {
   position: absolute;
@@ -5993,21 +6062,43 @@ body {
   margin: 0 0 0 -215px;
   z-index: 1;
 }
+.init .wall {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  overflow: visible;
+  margin: 0 0 0 -40px;
+  background: url('../img/squareA.png') no-repeat center bottom;
+}
+.init .wall span {
+  display: block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  line-height: 80px;
+}
+.init .wall em {
+  display: block;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  padding-left: 56px;
+  background: url('../img/fish.png') no-repeat center center;
+  background-size: auto 15px;
+  font-style: normal;
+  color: #fff;
+  z-index: -1;
+}
 .init .cat {
   bottom: 0;
-  z-index: 2;
-  left: 40%;
-  width: 600px;
-  height: 600px;
-}
-.init .cat .cat-mask {
-  width: 600px;
-  height: 600px;
-}
-.init .cat .cat-mask .cat-list {
-  width: 1200px;
-  height: 574px;
-  background-image: url('../img/cat.png');
 }
 .init .clound {
   position: absolute;
@@ -6096,13 +6187,14 @@ body {
   height: 30px;
   line-height: 30px;
   position: absolute;
-  bottom: 90px;
+  bottom: 50px;
   left: 0;
   padding-left: 56px;
   background: url('../img/fish.png') no-repeat center center;
   background-size: auto 15px;
   font-style: normal;
   color: #fff;
+  z-index: -1;
 }
 .stage .wall .wall-1 {
   width: 80px;

@@ -12,6 +12,7 @@ body{
 	bottom: 100%;
 	width: 200px;
 	height: 200px;
+	margin-left: -100px;
 	.cat-mask{
 		position: relative;
 		left: 0;
@@ -27,6 +28,12 @@ body{
 			background-image: url('@{imgPath}cats.png');
 		}
 	}
+}
+.fish{
+	display: block; width: 100%; height: 30px; line-height: 30px; position: absolute; bottom: 50px; left: 0; padding-left: 56px; background: url('@{imgPath}fish.png') no-repeat center center; background-size: auto 15px; font-style: normal; color: #fff; z-index: -1;
+}
+.wallText{
+	display: block; width: 80px; height: 80px; position: absolute; bottom: 0; left: 0; text-align: center; line-height: 80px;
 }
 .hide{
 	display: none;
@@ -44,7 +51,14 @@ body{
 	left: 0;
 	top:0;
 }
-.init{.content;
+.records{
+	position: fixed; top:20px; left: 0; width: 100%; height: 40px; line-height: 20px; display: table; padding: 0 20%;
+	p{display: table-cell; vertical-align: middle; text-align: center; color: #fff;
+		em{.fish; width: 100px; position: static; left: auto; bottom: auto; height: 20px; line-height: 20px; background-position: left center; display: inline-block;}
+	}
+}
+.init{
+	position: absolute; width: 200px; height: 380px; top: 50%; left: 50%; margin: -190px 0 0 -100px;
 	.name{
 		position: absolute;
 		left: 50%;
@@ -55,13 +69,17 @@ body{
 		margin: 0 0 0 -215px;
 		z-index: 1;
 	}
+	.wall{
+		width: 80px; height: 80px; position: absolute; left: 50%; top: 0; overflow: visible; margin: 0 0 0 -40px;
+		background: url('@{imgPath}squareA.png') no-repeat center bottom;
+		span{.wallText;}
+		em{.fish;}
+	}
 	.cat{
-		bottom: 0; z-index: 2; left: 40%; width: 600px; height: 600px;
+		bottom: 0;
 		.cat-mask{
-			width: 600px; height: 600px;
 			.cat-list{
-				width: 1200px; height: 574px;
-				background-image: url('@{imgPath}cat.png');
+				
 			}
 		}
 		
@@ -126,13 +144,8 @@ body{
 		position: absolute; width: 700%; left: -400%; height: 300px; top:10%; z-index: 1;
 		>div{
 			position: absolute; height: 100%; bottom: 0;
-			span{
-				display: block; width: 80px; height: 80px; position: absolute; bottom: 0; left: 0; text-align: center; line-height: 80px;
-			}
-			em{
-				display: block; width: 100%; height: 30px; line-height: 30px; position: absolute; bottom: 90px; left: 0; padding-left: 56px;
-				background: url('@{imgPath}fish.png') no-repeat center center; background-size: auto 15px; font-style: normal; color: #fff;
-			}
+			span{.wallText;}
+			em{.fish;}
 		}
 		.wall-1{
 			width: 80px; left: 320px;
