@@ -5987,6 +5987,7 @@ body {
   left: 0;
   text-align: center;
   line-height: 80px;
+  font-size: 2rem;
 }
 .hide {
   display: none;
@@ -6072,6 +6073,9 @@ body {
   margin: 0 0 0 -40px;
   background: url('../img/squareA.png') no-repeat center bottom;
 }
+.init .wall.wall-enable {
+  background-image: url('../img/squareB.png');
+}
 .init .wall span {
   display: block;
   width: 80px;
@@ -6081,6 +6085,7 @@ body {
   left: 0;
   text-align: center;
   line-height: 80px;
+  font-size: 2rem;
 }
 .init .wall em {
   display: block;
@@ -6180,6 +6185,7 @@ body {
   left: 0;
   text-align: center;
   line-height: 80px;
+  font-size: 2rem;
 }
 .stage .wall > div em {
   display: block;

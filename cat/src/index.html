@@ -92,6 +92,9 @@
 <script type="text/javascript" src="./js/lib/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="./js/lib/TweenMax.min.js"></script>
 <script type="text/javascript">
+	var percent = 0;
+	var start = new Date();
+	var end = 0;
 	var $init = $('#init');
 	var $wall = $init.find('.wall');
 	var $fish = $('#fish');
@@ -102,6 +105,7 @@
 		repeat:-1,
 		repeatDelay:0
 	});
+	var tl = new TimelineMax({});
 	catTL.from($catInit, 0.1, {
 		bottom: "0"
 	}).to($catInit, 0.3, {
@@ -140,15 +144,31 @@
 		}
 
 	});
-	window.onload = function(){
-		setTimeout(function(){
-			var t = catTL.duration();
-			console.log(t);
-			catTL.seek( '-='+t*20, false);
+	
+	// window.addEventListener("DOMContentLoaded", function(e){
+	// 	start = Math.round(new Date().getTime()/1000);
+	// });
+	window.addEventListener("load", function(e) {
+		// end = Math.round(e.timeStamp/1000);
+		preload();
+	});
+	function preload(){
+		percent +=2;
+		console.log(percent);
+		if(percent <= 98){
+			setTimeout("preload()", 100);
+		}else{
+			$wall.addClass('wall-enable');
+			catTL.pause();
 			TweenMax.to($wall, 0.3, {
-				opacity: 0
+				visibility: 'hidden',
+				onComplete: function(){
+					tl.to($catInit, 5, {
+						yPercent: 500
+					});
+				}
 			});
-		},100000);
+		}
 	}
 </script>
 </body>
