@@ -8,13 +8,8 @@
 <link href="./css/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="hide">
-<img src="http://p2.qhimg.com/t01ed1438874f940dc0.jpg"/>
-<img src="http://p9.qhimg.com/t01b4ff03b72c7dc6c7.jpg"/>
-<img src="http://p6.qhimg.com/t01aa15a7ba7ccb49a7.jpg"/>
-</div>
 <div class="content" id="content">
-	<div class="page"></div>
+	<div class="page" style="height:9000px;"></div>
 	<div class="records">
 		<p>CAT<br/>000000</p>
 		<p><em data-fish="0" id="fish">x 00</em></p>
@@ -29,7 +24,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="stage hide">
+	<div class="stage" id="stage">
 		<div class="cat">
 			<div class="cat-mask">
 				<div class="cat-list"></div>
@@ -85,6 +80,8 @@
 			<div class="tree-9"></div>
 			<div class="tree-10"></div>
 			<div class="tree-11"></div>
+			<div class="tree-12"></div>
+			<div class="tree-13"></div>
 		</div>
 		<div class="bg-stone"></div>
 	</div>
@@ -93,6 +90,7 @@
 <script type="text/javascript" src="./js/lib/TweenMax.min.js"></script>
 <script type="text/javascript">
 	var percent = 0;
+	var scrollPercent = 0;
 	var start = new Date();
 	var end = 0;
 	var $init = $('#init');
@@ -101,6 +99,9 @@
 	var $fishInit = $wall.find('em');
 	var $catInit = $init.find('.cat');
 	var $catBg = $init.find('.cat-list');
+	var $stage = $('#stage');
+	var $catStage = $stage.find('.cat');
+	var $content = $('#content');
 	var catTL = new TimelineMax({
 		repeat:-1,
 		repeatDelay:0
@@ -122,9 +123,7 @@
 			});
 		}
 	}, "+=0.2").to($catInit, 0.3, {
-		css:{
-			bottom: "0"
-		},
+		bottom: "0",
 		onStart: function(){
 			$catBg.css("left","0");
 		},
@@ -154,7 +153,6 @@
 	});
 	function preload(){
 		percent +=2;
-		console.log(percent);
 		if(percent <= 98){
 			setTimeout("preload()", 100);
 		}else{
@@ -162,14 +160,77 @@
 			catTL.pause();
 			TweenMax.to($wall, 0.3, {
 				visibility: 'hidden',
+				delay: 0.5,
 				onComplete: function(){
-					tl.to($catInit, 5, {
-						yPercent: 500
+					tl.to($catInit, 1, {
+						yPercent: 500,
+						onComplete: function(){
+							$init.remove();
+							TweenMax.to($stage, 0.1, {
+								opacity: "1",
+								onComplete: function(){
+									$content.attr('class','');
+									stage();
+								}
+							})
+						}
 					});
 				}
 			});
 		}
 	}
+
+	function stage(){
+		var $wallStage = $stage.find('.wall');
+		var $tree = $stage.find('.tree');
+		TweenMax.to($catStage, 1, {
+			bottom: "80px"
+		});
+		var tl1 = new TimelineLite({
+            paused: true,
+            onUpdate: ''
+        });
+        tl1.from($tree, 0.5, {
+	        left: '+=750%'
+	    });
+	    // doScroll(tl);
+        $(window).scroll(function (e) {
+	        doScroll(tl1,tl2);
+	        catRun($catStage);
+	    });
+	}
+
+	function doScroll(tl1,tl2){
+    	var scrollTop = $(window).scrollTop();
+        var docHeight = $(document).height();
+        var winHeight = $(window).height();
+        scrollPercent = scrollTop / (docHeight - winHeight);
+        var scrollPercentRounded = Math.round(scrollPercent * 100) / 100;
+        $('#scrollPercentLabel>span').html(scrollPercentRounded);
+        tl.progress(scrollPercent).pause();
+    }
+
+    function catRun(cat){
+    	var catBg = cat.find('.cat-list');
+    	var tl = new TimelineMax({});
+    	// tl.from(cat,0.1,{
+    	// 	bottom: "80px",
+    	// }).to(cat,0.3,{
+    	// 	bottom: "82px",
+    	// 	onStart: function(){
+    	// 		catBg.css("left","-120px");
+    	// 	}
+    	// }, "+=0.2").to(cat,0.3,{
+    	// 	bottom: "80px",
+    	// 	onStart: function(){
+    	// 		catBg.css("left","-240px");
+    	// 	}
+    	// });
+		tl.form(cat, 0.3, {
+			bottom: "80px"
+		});
+    	return tl;
+    }
 </script>
 </body>
 </html>

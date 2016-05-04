@@ -6153,9 +6153,14 @@ body {
   top: 0;
   left: 0;
   overflow: hidden;
+  zoom: 1;
+  filter: alpha(opacity=0);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
 }
 .stage .cat {
-  bottom: 80px;
+  bottom: 100%;
   width: 120px;
   height: 120px;
   z-index: 1;
@@ -6166,7 +6171,7 @@ body {
 .stage .wall {
   position: absolute;
   width: 700%;
-  left: -400%;
+  left: 100%;
   height: 300px;
   top: 10%;
   z-index: 1;
@@ -6307,7 +6312,7 @@ body {
 .stage .pipe {
   position: absolute;
   width: 700%;
-  left: -400%;
+  left: 0;
   height: 400px;
   bottom: 76px;
   z-index: 2;
@@ -6391,7 +6396,7 @@ body {
   height: 100px;
   position: absolute;
   bottom: 76px;
-  left: -400%;
+  left: -700%;
   z-index: 0;
 }
 .stage .tree > div {
@@ -6453,6 +6458,16 @@ body {
   background: url('../img/grassB.png') no-repeat center bottom;
   width: 85px;
   left: 8000px;
+}
+.stage .tree .tree-12 {
+  background: url('../img/treeB.png') no-repeat center bottom;
+  width: 114px;
+  left: 9000px;
+}
+.stage .tree .tree-13 {
+  background: url('../img/treeA.png') no-repeat center bottom;
+  width: 158px;
+  left: 10000px;
 }
 .stage .bg-stone {
   background: url('../img/bg-stone.png');
