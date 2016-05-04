@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta charset="utf-8"/>
+<meta name="Description" content="看到有人用html5做了超炫酷的简历，我也来一发。谁说前端一定要是狮子，也可以是喵星人。花爷和超级玛丽的合体，创意不算新，但是每一个线条每一个颜色，就像底下的砖头一样，都是一个个叠出来的。请给我点赞，哈哈哈哈哈！">
+<title>一只前端喵的进阶历程</title>
+<link href="./css/main.css" rel="stylesheet" type="text/css"/>
+<style>
+.stage{opacity: 1;}
+.stage .cat{bottom: 80px; background: url('./img/cats.png') no-repeat 0 0; background-size: 960px auto;}
+#catRunForward{left: 100px;}
+#catJumpForward{left: 400px;}
+#catFlyForward{left: 700px;}
+#catRunBackward{left: 1000px;}
+#catJumpBackward{left: 1300px;}
+#catFlyBackward{left: 1600px;}
+.btn{width: 100px; height: 30px; position: absolute; top:30%; left: 50%; background: #000; color: #fff;}
+#stop{ left: 100px;}
+#reverse{ left: 400px;}
+#pause{ left: 700px;}
+</style>
+</head>
+<body>
+<div class="" id="content">
+	<div class="page" style="height:9000px;"></div>
+		<div class="stage" id="stage">
+		<div class="cat" id="catRunForward"></div>
+		<div class="cat" id="catJumpForward"></div>
+		<div class="cat" id="catFlyForward"></div>
+		<div class="cat" id="catRunBackward"></div>
+		<div class="cat" id="catJumpBackward"></div>
+		<div class="cat" id="catFlyBackward"></div>
+		<div class="btn" id="stop">stop</div>
+		<div class="btn" id="reverse">reverse</div>
+		<div class="btn" id="pause">pause</div>
+		<div class="bg-stone"></div>
+	</div>
+</div>
+<script type="text/javascript" src="./js/lib/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="./js/lib/TweenMax.min.js"></script>
+<script type="text/javascript">
+var catRunForward = catRun($('#catRunForward'),1);
+var catJumpForward = catJump($('#catJumpForward'),1);
+var catFlyForward = catFly($('#catFlyForward'),1);
+var catRunBackward = catRun($('#catRunBackward'),2);
+var catJumpBackward = catJump($('#catJumpBackward'),2);
+var catFlyBackward = catFly($('#catFlyBackward'),2);
+// $(window).scroll(function() {
+// 	catRunForward.play();
+// 	console.log('is scrolling');
+//   clearTimeout($.data(this, 'scrollTimer'));
+//   $.data(this, 'scrollTimer', setTimeout(function() {
+//       catRunForward.stop();
+//       console.log('is not scrolling');
+//   }, 250));
+// });
+
+// window.addEventListener("scroll", function(e) {
+
+// });
+$('#stop').click(function(e){
+	catRunForward.stop(0);
+});
+
+$('#reverse').click(function(e){
+	catJumpForward.reverse();
+});
+
+$('#pause').click(function(e){
+	catFlyForward.pause(0);
+});
+
+function catRun($cat, row) {
+	var frameHeight = 120;
+	var frameWidth = 120;
+	var numCols = 2;
+	var steppedEase = new SteppedEase(numCols-1);
+	var tl = new TimelineMax({repeat:-1});
+	tl.add( TweenMax.fromTo($cat, 0.5, {
+  	backgroundPosition:'-'+(frameWidth*(numCols-1))+'px -'+((frameHeight+36*0.6)*(row-1))+'px'
+  }, { 
+  	backgroundPosition: '-'+(frameWidth*(numCols))+'px -'+((frameHeight+36*0.6)*(row-1))+'px', 
+  	ease:steppedEase
+  }));
+  console.log(tl);
+  return tl;
+}
+function catJump($cat, row){
+	var frameHeight = 120;
+	var frameWidth = 120;
+	var numCols = 2;
+	var steppedEase = new SteppedEase(numCols-1);
+	var tl = new TimelineMax({repeat:-1});
+	tl.add( TweenMax.fromTo($cat, 0.5, {
+  	backgroundPosition:'-'+(frameWidth*(numCols+5))+'px -'+((frameHeight+36*0.6)*(row-1))+'px',
+  	delay: '0.3'
+  }, { 
+  	backgroundPosition: '-'+(frameWidth*(numCols+4))+'px -'+((frameHeight+36*0.6)*(row-1))+'px', 
+  	ease:steppedEase
+  }));
+  return tl;
+}
+
+function catFly($cat, row){
+	var frameHeight = 120;
+	var frameWidth = 120;
+	var numCols = 3;
+	var steppedEase = new SteppedEase(numCols-1);
+	var tl = new TimelineMax({repeat:-1});
+	tl.add( TweenMax.fromTo($cat, 0.5, {
+  	backgroundPosition:'-'+(frameWidth*(numCols))+'px -'+((frameHeight+36*0.6)*(row-1))+'px',
+  	delay: '0.3'
+  }, { 
+  	backgroundPosition: '-'+(frameWidth*(numCols+2))+'px -'+((frameHeight+36*0.6)*(row-1))+'px', 
+  	ease:steppedEase
+  }));
+  return tl;
+}
+</script>
+</body>
+</html>

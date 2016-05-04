@@ -5947,21 +5947,8 @@ body {
   width: 200px;
   height: 200px;
   margin-left: -100px;
-}
-.cat .cat-mask {
-  position: relative;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.cat .cat-mask .cat-list {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 1600px;
-  height: 436px;
-  background-image: url('../img/cats.png');
+  background: url('../img/cats.png') no-repeat 0 0;
+  background-size: 1600px auto;
 }
 .fish {
   display: block;
@@ -5988,6 +5975,90 @@ body {
   text-align: center;
   line-height: 80px;
   font-size: 2rem;
+}
+.carly {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 100px;
+  line-height: 1em;
+  color: #005d9b;
+  font-weight: bold;
+  font-size: 500px;
+  text-shadow: 0px 0px 0 #000000, -1px 1px 0 #000000, -2px 2px 0 #000000, -3px 3px 0 #000000, -4px 4px 0 #000000, -5px 5px 0 #000000, -6px 6px 0 #000000, -7px 7px 0 #000000, -8px 8px 0 #000000, -9px 9px 0 #000000, -10px 10px 0 #000000, -11px 11px 0 #000000, -12px 12px 0 #000000, -13px 13px 0 #000000, -14px 14px 0 #000000, -15px 15px 0 #000000, -16px 16px 0 #000000, -17px 17px 0 #000000, -18px 18px 0 #000000, -19px 19px 0 #000000, -20px 20px 0 #000000, -21px 21px 0 #000000, -22px 22px 0 #000000, -23px 23px 0 #000000, -24px 24px 0 #000000, -25px 25px 0 #000000, -26px 26px 0 #000000, -27px 27px 0 #000000, -28px 28px 0 #000000, -29px 29px 0 #000000, -30px 30px 0 #000000, -31px 31px 0 #000000, -32px 32px 0 #000000;
+}
+.carly em {
+  display: inline-block;
+  position: relative;
+}
+.carly em:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  border-bottom: 500px solid #000;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  height: 0;
+  width: 300px;
+  left: -30px;
+  top: 230px;
+  z-index: -1;
+}
+.carly em:nth-child(1):before {
+  width: 320px;
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+  left: -120px;
+  top: 180px;
+}
+.carly em:nth-child(2):before {
+  width: 400px;
+  -webkit-transform: rotate(20deg);
+  -moz-transform: rotate(20deg);
+  -o-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+  transform: rotate(20deg);
+  left: -180px;
+  top: 214px;
+  border-left-width: 120px;
+  border-right-width: 10px;
+}
+.carly em:nth-child(3):before {
+  width: 320px;
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+  left: -200px;
+  border-left-width: 100px;
+  border-right-width: 80px;
+  top: 180px;
+}
+.carly em:nth-child(4):before {
+  width: 320px;
+  left: -150px;
+  top: 60px;
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
+  border-left-width: 180px;
+  border-right-width: 120px;
+}
+.carly em:nth-child(5):before {
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
+  top: 350px;
+  left: -80px;
 }
 .hide {
   display: none;
@@ -6104,6 +6175,7 @@ body {
 }
 .init .cat {
   bottom: 0;
+  background-size: 1600px auto;
 }
 .init .clound {
   position: absolute;
@@ -6164,8 +6236,6 @@ body {
   width: 120px;
   height: 120px;
   z-index: 1;
-}
-.stage .cat .cat-mask .cat-list {
   background-size: 960px auto;
 }
 .stage .wall {

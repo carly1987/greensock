@@ -195,12 +195,12 @@
 	    });
 	    // doScroll(tl);
         $(window).scroll(function (e) {
-	        doScroll(tl1,tl2);
+	        doScroll(tl1);
 	        catRun($catStage);
 	    });
 	}
 
-	function doScroll(tl1,tl2){
+	function doScroll(tl1){
     	var scrollTop = $(window).scrollTop();
         var docHeight = $(document).height();
         var winHeight = $(window).height();

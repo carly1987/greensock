@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta charset="utf-8"/>
+<meta name="Description" content="看到有人用html5做了超炫酷的简历，我也来一发。谁说前端一定要是狮子，也可以是喵星人。花爷和超级玛丽的合体，创意不算新，但是每一个线条每一个颜色，就像底下的砖头一样，都是一个个叠出来的。请给我点赞，哈哈哈哈哈！">
+<title>一只前端喵的进阶历程</title>
+<link href="./css/main.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="content" id="content">
+	<div class="records">
+		<p>CAT<br/>000000</p>
+		<p><em data-fish="0" id="fish">x 00</em></p>
+		<p>FRONTEND<br/>1-1</p>
+		<p>TIME<br/>400</p>
+	</div>
+	<div class="init" id="init">
+		<div class="wall"><span>夏芸</span><em></em></div>
+		<div class="cat"></div>
+	</div>
+	<div class="stage" id="stage">
+		<div class="cat"></div>
+		<div class="carly"><em>c</em><em>a</em><em>r</em><em>l</em><em>y</em></div>
+		<div class="bg-stone"></div>
+	</div>
+</div>
+<script type="text/javascript" src="./js/lib/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="./js/lib/TweenMax.min.js"></script>
+<script type="text/javascript">
+	var $fish = $('#fish');
+	var $init = $('#init');
+	var $stage = $('#stage');
+	var percent = 0;
+	var init;
+	window.addEventListener("DOMContentLoaded", function(e){
+		init = init();
+	});
+	window.addEventListener("load", function(e) {
+		preload(init);
+	});
+	function catJump($cat, row){
+		var frameHeight = 120;
+		var frameWidth = 120;
+		var numCols = 2;
+		var steppedEase = new SteppedEase(numCols-1);
+		var tl = new TimelineMax({repeat:-1});
+		tl.add( TweenMax.fromTo($cat, 0.5, {
+	  	backgroundPosition:'-'+(frameWidth*(numCols+5))+'px -'+((frameHeight+36*0.6)*(row-1))+'px',
+	  	delay: '0.3'
+	  }, { 
+	  	backgroundPosition: '-'+(frameWidth*(numCols+4))+'px -'+((frameHeight+36*0.6)*(row-1))+'px', 
+	  	ease:steppedEase
+	  }));
+	  return tl;
+	}
+	function wallGetFish($wall){
+		var $fishInit = $wall.find('em');
+		var tl = new TimelineMax({repeat:-1});
+		tl.from($wall, 0, {
+			top: "0"
+		}).to($wall, 0.1, {
+			top: "-20px",
+			onStart: function(){
+				TweenMax.to($fishInit, 0.1, {
+					bottom: "100px",
+					opacity: 1
+				});
+			}
+		}).to($wall, 0.2, {
+			top: "0",
+			onStart: function(){
+				TweenMax.to($fishInit, 0.2, {
+					opacity: 0,
+					bottom: "50px",
+					onStart: function(){
+						addFish();
+					}
+				});
+			}
+		});
+		return tl;
+	}
+	function catGetFish($cat, $wall){
+		var tl = new TimelineMax({repeat:-1});
+		var wallTl = wallGetFish($wall);
+		wallTl.stop(0);
+		tl.from($cat, 0.1, {
+			bottom: "0"
+		}).to($cat, 0.8, {
+			bottom: "100px",
+			onComplete: function(){
+				wallTl.play(0);
+			}
+		}).to($cat, 0.3, {
+			bottom: "0",
+			onComplete: function(){
+				wallTl.pause(0);
+			}
+		});
+		return tl;
+	}
+	function stageInit(init){
+		var initTl = init.tl;
+		var $wall = init.wall;
+		var $cat = init.cat;
+		initTl.stop(0);
+		var tl = new TimelineMax({delay: 0.5});
+		tl.to($cat, 0.5, {
+			yPercent: 200,
+		}).to($wall, 0.5, {
+			opacity: 0,
+			onStart: function(){
+				$init.remove();
+				TweenMax.to($stage, 0.1, {
+					opacity: 1,
+					onStart: function(){
+						stageReady();
+					}
+				});
+			}
+		});
+	}
+	function stageReady(){
+		var $cat = $stage.find('.cat');
+		var tl = new TimelineMax();
+		tl.to($cat, 1, {
+			bottom: "80px"
+		});
+	}
+	function init(){
+		var $wall = $init.find('.wall');
+		var $cat = $init.find('.cat');
+		var tl = catGetFish($cat, $wall);
+		return {"cat":$cat, "wall":$wall, "tl":tl};
+	}
+	function preload(init){
+		var $wall = init.wall;
+		percent +=2;
+		if(percent <= 98){
+			setTimeout("preload(init)", 100);
+		}else{
+			$wall.addClass('wall-enable');
+			stageInit(init);
+		}
+	}
+	function addFish(){
+		var fish = parseInt($fish.attr('data-fish'));
+		fish +=1;
+		$fish.html('x '+fish);
+		$fish.attr('data-fish', fish);
+	}
+</script>
+</body>
+</html>
