@@ -1,9 +1,14 @@
-var gulp = require('gulp');
-var construct = require('gulp-construct');
-var less = require('gulp-less');
-var watch = require('gulp-watch');
-var path = require('path');
-var connect = require('gulp-connect');
+var gulp = require('gulp'),
+    construct = require('gulp-construct'),
+    less = require('gulp-less'),
+    watch = require('gulp-watch'),
+    path = require('path'),
+    connect = require('gulp-connect'),
+    concat = require('gulp-concat'),
+    rename = require('gulp-rename'),
+    minifycss = require('gulp-minify-css'),
+    uglify = require('gulp-uglify'),
+    imagemin = require('gulp-imagemin');
 
 var src = {
 
@@ -17,6 +22,14 @@ var src = {
 
 }
 
+var js = {
+  lib: ['src/js/lib/jquery-2.2.3.min.js', 'src/js/lib/TweenMax.min.js'],
+  main: ['src/js/index.js', 'src/js/main.js']
+}
+
+var css = [
+  'src/css/main.less'
+]
 
 gulp.task('construct',function() {
     gulp.src('src/**/*.html')
@@ -43,26 +56,42 @@ gulp.task('connect', function () {
 });
 
 gulp.task('css', function () {
-    gulp.src('src/css/main.less')
+    gulp.src(css)
         .pipe(less())
         .pipe(connect.reload())
-        .pipe(gulp.dest('./build/css'));
+        .pipe(gulp.dest('./build/css'))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(minifycss())
+        .pipe(gulp.dest('./dist/css'))
+        .pipe(notify({ message: 'css is done!' }));
 });
 
 
 gulp.task('js', function () {
-    gulp.src('src/js/lib/**.js')
+    gulp.src(js.lib)
+      .pipe(concat('lib.js'))
       .pipe(connect.reload())
-      .pipe(gulp.dest('./build/js/lib'));
-    gulp.src('src/js/**.js')
+      .pipe(gulp.dest('./build/js/'))
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(uglify())
+      .pipe(gulp.dest('./dist/js'))
+      .pipe(notify({ message: 'libJS is done!' }));
+    gulp.src(js.main)
       .pipe(connect.reload())
-      .pipe(gulp.dest('./build/js'));
+      .pipe(gulp.dest('./build/js/'))
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(uglify())
+      .pipe(gulp.dest('./dist/js'))
+      .pipe(notify({ message: 'mainJS is done!' }));
 });
 
 gulp.task('img', function() {
   gulp.src('src/img/**')
     .pipe(connect.reload())
-    .pipe(gulp.dest('./build/img'));
+    .pipe(gulp.dest('./build/img'))
+    .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
+    .pipe(gulp.dest('./dist/img'))
+    .pipe(notify({ message: 'img is done!' }));
 });
 
 gulp.task('html', function () {
