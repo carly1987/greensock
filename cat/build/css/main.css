@@ -5965,6 +5965,19 @@ body {
   color: #fff;
   z-index: -1;
 }
+.demon {
+  width: 54px;
+  height: 52px;
+  background: url('../img/demon.png') no-repeat center center;
+  position: absolute;
+  bottom: 80px;
+  left: 80%;
+  zoom: 1;
+  filter: alpha(opacity=0);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+}
 .wallText {
   display: block;
   width: 80px;
@@ -6118,10 +6131,10 @@ body {
 .init {
   position: absolute;
   width: 200px;
-  height: 380px;
+  height: 300px;
   top: 50%;
   left: 50%;
-  margin: -190px 0 0 -100px;
+  margin: -150px 0 0 -100px;
 }
 .init .name {
   position: absolute;
@@ -6175,7 +6188,10 @@ body {
 }
 .init .cat {
   bottom: 0;
-  background-size: 1600px auto;
+  background-size: 960px auto;
+  width: 120px;
+  height: 120px;
+  margin-left: -60px;
 }
 .init .clound {
   position: absolute;
@@ -6241,9 +6257,9 @@ body {
 .stage .wall {
   position: absolute;
   width: 700%;
-  left: 100%;
+  left: 150%;
   height: 300px;
-  top: 10%;
+  bottom: 280px;
   z-index: 1;
 }
 .stage .wall > div {
@@ -6466,78 +6482,9 @@ body {
   height: 100px;
   position: absolute;
   bottom: 76px;
-  left: -700%;
+  left: 100%;
   z-index: 0;
-}
-.stage .tree > div {
-  position: absolute;
-  bottom: 0;
-  height: 100%;
-}
-.stage .tree .tree-1 {
-  background: url('../img/grassA.png') no-repeat center bottom;
-  width: 126px;
-  left: 100px;
-}
-.stage .tree .tree-2 {
-  background: url('../img/treeA.png') no-repeat center bottom;
-  width: 158px;
-  left: 250px;
-}
-.stage .tree .tree-3 {
-  background: url('../img/treeB.png') no-repeat center bottom;
-  width: 114px;
-  left: 1350px;
-}
-.stage .tree .tree-4 {
-  background: url('../img/grassB.png') no-repeat center bottom;
-  width: 85px;
-  left: 2400px;
-}
-.stage .tree .tree-5 {
-  background: url('../img/treeA.png') no-repeat center bottom;
-  width: 158px;
-  left: 3450px;
-}
-.stage .tree .tree-6 {
-  background: url('../img/grassA.png') no-repeat center bottom;
-  width: 126px;
-  left: 4300px;
-}
-.stage .tree .tree-7 {
-  background: url('../img/grassB.png') no-repeat center bottom;
-  width: 85px;
-  left: 4500px;
-}
-.stage .tree .tree-8 {
-  background: url('../img/treeA.png') no-repeat center bottom;
-  width: 158px;
-  left: 5500px;
-}
-.stage .tree .tree-9 {
-  background: url('../img/treeB.png') no-repeat center bottom;
-  width: 114px;
-  left: 6500px;
-}
-.stage .tree .tree-10 {
-  background: url('../img/grassA.png') no-repeat center bottom;
-  width: 126px;
-  left: 7800px;
-}
-.stage .tree .tree-11 {
-  background: url('../img/grassB.png') no-repeat center bottom;
-  width: 85px;
-  left: 8000px;
-}
-.stage .tree .tree-12 {
-  background: url('../img/treeB.png') no-repeat center bottom;
-  width: 114px;
-  left: 9000px;
-}
-.stage .tree .tree-13 {
-  background: url('../img/treeA.png') no-repeat center bottom;
-  width: 158px;
-  left: 10000px;
+  background: url('../img/grassA.png') no-repeat 100px bottom, url('../img/treeA.png') no-repeat 250px bottom, url('../img/treeB.png') no-repeat 1350px bottom, url('../img/grassB.png') no-repeat 2400px bottom, url('../img/treeA.png') no-repeat 3450px bottom, url('../img/grassA.png') no-repeat 4300px bottom, url('../img/grassB.png') no-repeat 4500px bottom, url('../img/treeA.png') no-repeat 5500px bottom, url('../img/treeB.png') no-repeat 6500px bottom, url('../img/grassA.png') no-repeat 7800px bottom, url('../img/grassB.png') no-repeat 8000px bottom, url('../img/treeB.png') no-repeat 9000px bottom, url('../img/treeA.png') no-repeat 9500px bottom;
 }
 .stage .bg-stone {
   background: url('../img/bg-stone.png');

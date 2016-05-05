@@ -22,6 +22,30 @@
 	<div class="stage" id="stage">
 		<div class="cat"></div>
 		<div class="carly"><em>c</em><em>a</em><em>r</em><em>l</em><em>y</em></div>
+		<div class="wall">
+			<div class="wall-1"><span>设计</span><em></em></div>
+			<div class="wall-2"></div>
+			<div class="wall-3"></div>
+			<div class="wall-4"></div>
+			<div class="wall-5"><span>编程</span><em></em></div>
+			<div class="wall-6"></div>
+			<div class="wall-7"><span>动画</span><em></em></div>
+			<div class="wall-8"></div>
+			<div class="wall-9"></div>
+			<div class="wall-10"></div>
+			<div class="wall-11"></div>
+			<div class="wall-12"></div>
+			<div class="wall-13"></div>
+			<div class="wall-14"></div>
+			<div class="wall-15"></div>
+			<div class="wall-16"></div>
+			<div class="wall-17"></div>
+			<div class="wall-18"></div>
+			<div class="wall-19"></div>
+			<div class="wall-20"></div>
+		</div>
+		<div class="demon"></div>
+		<div class="tree"></div>
 		<div class="bg-stone"></div>
 	</div>
 </div>
@@ -54,6 +78,20 @@
 	  }));
 	  return tl;
 	}
+	function catRun($cat, row) {
+		var frameHeight = 120;
+		var frameWidth = 120;
+		var numCols = 2;
+		var steppedEase = new SteppedEase(numCols-1);
+		var tl = new TimelineMax({repeat:-1});
+		tl.add( TweenMax.fromTo($cat, 0.5, {
+	  	backgroundPosition:'-'+(frameWidth*(numCols-1))+'px -'+((frameHeight+36*0.6)*(row-1))+'px'
+	  }, { 
+	  	backgroundPosition: '-'+(frameWidth*(numCols))+'px -'+((frameHeight+36*0.6)*(row-1))+'px', 
+	  	ease:steppedEase
+	  }));
+	  return tl;
+	}
 	function wallGetFish($wall){
 		var $fishInit = $wall.find('em');
 		var tl = new TimelineMax({repeat:-1});
@@ -81,19 +119,19 @@
 		});
 		return tl;
 	}
-	function catGetFish($cat, $wall){
+	function catGetFish($cat, $wall, from, to){
 		var tl = new TimelineMax({repeat:-1});
 		var wallTl = wallGetFish($wall);
 		wallTl.stop(0);
-		tl.from($cat, 0.1, {
-			bottom: "0"
-		}).to($cat, 0.8, {
-			bottom: "100px",
+		tl.from($cat, 0.3, {
+			bottom: from
+		}).to($cat, 0.6, {
+			bottom: to,
 			onComplete: function(){
 				wallTl.play(0);
 			}
 		}).to($cat, 0.3, {
-			bottom: "0",
+			bottom: from,
 			onComplete: function(){
 				wallTl.pause(0);
 			}
@@ -122,16 +160,91 @@
 		});
 	}
 	function stageReady(){
+		var percent = 0;
 		var $cat = $stage.find('.cat');
+		var $carly = $stage.find('.carly');
+		var $tree = $stage.find('.tree');
+		var $wall = $stage.find('.wall');
+		var $demon = $stage.find('.demon');
+		var catRunTl = catRun($cat, 1);
+		var catJumpTl = catJump($cat, 1);
+		catRunTl.stop(0);
+		catJumpTl.stop(0);
+		var tlTemp ;
 		var tl = new TimelineMax();
 		tl.to($cat, 1, {
-			bottom: "80px"
-		});
+			bottom: "80px",
+			onComplete: function(){
+				catRunTl.play(0);
+			}
+		}).to($carly, 14, {
+			left: "-100%"
+		}).to($tree, 18.5, {
+			left: "0%"
+		}, "-=10").to($wall, 18.5, {
+			left: "22%"
+		}, "-=18.5").add(pause).to($demon, 4, {
+			opacity: 1,
+			left: "48%"
+		}).to($tree, 4, {
+			left: "-28%"
+		}, "-=4").to($wall, 4, {
+			left: "-6%"
+		}, "-=4");
+		tl.addLabel('design', 18.5);
+		tl.addLabel('null', 22.5);
+		// tl.pause('design', false);
+		function pause(){
+			tl.pause();
+			catRunTl.stop(0);
+			catJumpTl.play(0);
+			var label = tl.getLabelAfter(18);
+			console.log(label);
+			switch(label){
+				case "design":
+					var wall = $wall.find(".wall-1");
+					getFish(wall, 5);
+					break;
+				case "null":
+					var wall = $wall.find(".wall-3");
+					getFish(wall, 0);
+					break;
+				default:
+					break;
+			}
+			
+		}
+		function getFish(wall, fish){
+			tlTemp = catGetFish($cat, wall, "80px", "160px", fish);
+			console.log(tlTemp.duration());
+			if(fish == 0){
+				fish = 1
+			}
+			fish = fish * tlTemp.duration() * 1000;
+
+			setTimeout(function(){
+				tlTemp.stop(0);
+				tlTemp = "";
+				wall.addClass('wall-enable');
+				catJumpTl.stop(0);
+				catRunTl.play();
+				tl.play();
+			}, fish);
+			// var getFishIng = function(){
+			// 	console.log(percent);
+			// 	percent +=1;
+			// 	if(percent < fish){
+			// 		setTimeout("getFishIng()", fish);
+			// 	}else{
+			// 		tlTemp = ""
+			// 	}
+			// }();
+		}
 	}
 	function init(){
 		var $wall = $init.find('.wall');
 		var $cat = $init.find('.cat');
-		var tl = catGetFish($cat, $wall);
+		var tl = catGetFish($cat, $wall, "0px", "100px");
 		return {"cat":$cat, "wall":$wall, "tl":tl};
 	}
 	function preload(init){

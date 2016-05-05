@@ -19,6 +19,7 @@ body{
 .fish{
 	display: block; width: 100%; height: 30px; line-height: 30px; position: absolute; bottom: 50px; left: 0; padding-left: 56px; background: url('@{imgPath}fish.png') no-repeat center center; background-size: auto 15px; font-style: normal; color: #fff; z-index: -1;
 }
+.demon{ width: 54px; height: 52px; background: url('@{imgPath}demon.png') no-repeat center center; position: absolute; bottom: 80px; left: 80%; .opacity(0);}
 .wallText{
 	display: block; width: 80px; height: 80px; position: absolute; bottom: 0; left: 0; text-align: center; line-height: 80px; font-size: 2rem;
 }
@@ -83,7 +84,7 @@ width: 300px; left: -30px; top: 230px; z-index: -1;
 	}
 }
 .init{
-	position: absolute; width: 200px; height: 380px; top: 50%; left: 50%; margin: -190px 0 0 -100px;
+	position: absolute; width: 200px; height: 300px; top: 50%; left: 50%; margin: -150px 0 0 -100px;
 	.name{
 		position: absolute;
 		left: 50%;
@@ -102,7 +103,7 @@ width: 300px; left: -30px; top: 230px; z-index: -1;
 		em{.fish;}
 	}
 	.cat{
-		bottom: 0; background-size: 1600px auto;	
+		bottom: 0; background-size: 960px auto;	width: 120px; height: 120px; margin-left: -60px;
 	}
 	.clound{
 		position: absolute;
@@ -156,7 +157,7 @@ width: 300px; left: -30px; top: 230px; z-index: -1;
 		bottom: 100%; width: 120px; height: 120px; z-index: 1; background-size: 960px auto;
 	}
 	.wall{
-		position: absolute; width: 700%; left: 100%; height: 300px; top:10%; z-index: 1;
+		position: absolute; width: 700%; left: 150%; height: 300px; bottom:280px; z-index: 1;
 		>div{
 			position: absolute; height: 100%; bottom: 0;
 			span{.wallText;}
@@ -286,76 +287,8 @@ width: 300px; left: -30px; top: 230px; z-index: -1;
 		}
 	}
 	.tree{
-		width: 700%; height: 100px; position: absolute; bottom:76px; left: -700%; z-index: 0;
-		>div{
-			position: absolute;
-			bottom: 0; height: 100%;
-		}
-		.tree-1{
-			background: url('@{imgPath}grassA.png') no-repeat center bottom;
-			width: 126px;
-			left: 100px;
-		}
-		.tree-2{
-			background: url('@{imgPath}treeA.png') no-repeat center bottom;
-			width: 158px;
-			left: 250px;
-		}
-		.tree-3{
-			background: url('@{imgPath}treeB.png') no-repeat center bottom;
-			width: 114px;
-			left: 1350px;
-		}
-		.tree-4{
-			background: url('@{imgPath}grassB.png') no-repeat center bottom;
-			width: 85px;
-			left: 2400px;
-		}
-		.tree-5{
-			background: url('@{imgPath}treeA.png') no-repeat center bottom;
-			width: 158px;
-			left: 3450px;
-		}
-		.tree-6{
-			background: url('@{imgPath}grassA.png') no-repeat center bottom;
-			width: 126px;
-			left: 4300px;
-		}
-		.tree-7{
-			background: url('@{imgPath}grassB.png') no-repeat center bottom;
-			width: 85px;
-			left: 4500px;
-		}
-		.tree-8{
-			background: url('@{imgPath}treeA.png') no-repeat center bottom;
-			width: 158px;
-			left: 5500px;
-		}
-		.tree-9{
-			background: url('@{imgPath}treeB.png') no-repeat center bottom;
-			width: 114px;
-			left: 6500px;
-		}
-		.tree-10{
-			background: url('@{imgPath}grassA.png') no-repeat center bottom;
-			width: 126px;
-			left: 7800px;
-		}
-		.tree-11{
-			background: url('@{imgPath}grassB.png') no-repeat center bottom;
-			width: 85px;
-			left: 8000px;
-		}
-		.tree-12{
-			background: url('@{imgPath}treeB.png') no-repeat center bottom;
-			width: 114px;
-			left: 9000px;
-		}
-		.tree-13{
-			background: url('@{imgPath}treeA.png') no-repeat center bottom;
-			width: 158px;
-			left: 10000px;
-		}
+		width: 700%; height: 100px; position: absolute; bottom:76px; left: 100%; z-index: 0;
+		background: url('@{imgPath}grassA.png') no-repeat 100px bottom, url('@{imgPath}treeA.png') no-repeat 250px bottom, url('@{imgPath}treeB.png') no-repeat 1350px bottom, url('@{imgPath}grassB.png') no-repeat 2400px bottom, url('@{imgPath}treeA.png') no-repeat 3450px bottom, url('@{imgPath}grassA.png') no-repeat 4300px bottom, url('@{imgPath}grassB.png') no-repeat 4500px bottom, url('@{imgPath}treeA.png') no-repeat 5500px bottom, url('@{imgPath}treeB.png') no-repeat 6500px bottom, url('@{imgPath}grassA.png') no-repeat 7800px bottom, url('@{imgPath}grassB.png') no-repeat 8000px bottom, url('@{imgPath}treeB.png') no-repeat 9000px bottom, url('@{imgPath}treeA.png') no-repeat 9500px bottom;
 	}
 	.bg-stone{
 		background: url('@{imgPath}bg-stone.png');
