@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     minifycss = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
+    notify = require('gulp-notify'),
     imagemin = require('gulp-imagemin');
 
 var src = {
@@ -23,7 +24,7 @@ var src = {
 }
 
 var js = {
-  lib: ['src/js/lib/jquery-2.2.3.min.js', 'src/js/lib/TweenMax.min.js'],
+  lib: ['src/js/lib/jquery-2.2.3.min.js', 'src/js/lib/TweenMax.min.js', 'src/js/lib/vue.js'],
   main: ['src/js/index.js', 'src/js/main.js']
 }
 

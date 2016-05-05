@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta charset="utf-8"/>
+<meta name="Description" content="看到有人用html5做了超炫酷的简历，我也来一发。谁说前端一定要是狮子，也可以是喵星人。花爷和超级玛丽的合体，创意不算新，但是每一个线条每一个颜色，就像底下的砖头一样，都是一个个叠出来的。请给我点赞，哈哈哈哈哈！">
+<title>一只前端喵的进阶历程</title>
+<link href="./css/main.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="content" id="content">
+	<div class="page" style="height:9000px;"></div>
+	<div class="records">
+		<p>CAT<br/>000000</p>
+		<p><em data-fish="0" id="fish">x 00</em></p>
+		<p>FRONTEND<br/>1-1</p>
+		<p>TIME<br/>400</p>
+	</div>
+	<div class="init" id="init">
+		<div class="wall"><span>夏芸</span><em></em></div>
+		<div class="cat">
+			<div class="cat-mask">
+				<div class="cat-list"></div>
+			</div>
+		</div>
+	</div>
+	<div class="stage" id="stage">
+		<div class="cat">
+			<div class="cat-mask">
+				<div class="cat-list"></div>
+			</div>
+		</div>
+		<div class="wall">
+			<div class="wall-1"><span>设计</span><em></em></div>
+			<div class="wall-2"></div>
+			<div class="wall-3"></div>
+			<div class="wall-4"></div>
+			<div class="wall-5"><span>编程</span><em></em></div>
+			<div class="wall-6"></div>
+			<div class="wall-7"><span>动画</span><em></em></div>
+			<div class="wall-8"></div>
+			<div class="wall-9"></div>
+			<div class="wall-10"></div>
+			<div class="wall-11"></div>
+			<div class="wall-12"></div>
+			<div class="wall-13"></div>
+			<div class="wall-14"></div>
+			<div class="wall-15"></div>
+			<div class="wall-16"></div>
+			<div class="wall-17"></div>
+			<div class="wall-18"></div>
+			<div class="wall-19"></div>
+			<div class="wall-20"></div>
+		</div>
+		<div class="pipe">
+			<div class="pipe-1"><span class="ie"></span></div>
+			<div class="pipe-2"><span class="firework"></span></div>
+			<div class="pipe-3"><span class="chrome"></span></div>
+			<div class="pipe-4"></div>
+		</div>
+		<div class="victory">
+			<div class="ladder"></div>
+			<div class="flag"><span></span></div>
+			<div class="castle"></div>
+		</div>
+		<div class="clound">
+			<div class="clound-tiny"></div>
+			<div class="clound-small"></div>
+			<div class="clound-big"></div>
+		</div>
+		<div class="tree">
+			<div class="tree-1"></div>
+			<div class="tree-2"></div>
+			<div class="tree-3"></div>
+			<div class="tree-4"></div>
+			<div class="tree-5"></div>
+			<div class="tree-6"></div>
+			<div class="tree-7"></div>
+			<div class="tree-8"></div>
+			<div class="tree-9"></div>
+			<div class="tree-10"></div>
+			<div class="tree-11"></div>
+			<div class="tree-12"></div>
+			<div class="tree-13"></div>
+		</div>
+		<div class="bg-stone"></div>
+	</div>
+</div>
+<script type="text/javascript" src="./js/lib/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="./js/lib/TweenMax.min.js"></script>
+<script type="text/javascript">
+	var percent = 0;
+	var scrollPercent = 0;
+	var start = new Date();
+	var end = 0;
+	var $init = $('#init');
+	var $wall = $init.find('.wall');
+	var $fish = $('#fish');
+	var $fishInit = $wall.find('em');
+	var $catInit = $init.find('.cat');
+	var $catBg = $init.find('.cat-list');
+	var $stage = $('#stage');
+	var $catStage = $stage.find('.cat');
+	var $content = $('#content');
+	var catTL = new TimelineMax({
+		repeat:-1,
+		repeatDelay:0
+	});
+	var tl = new TimelineMax({});
+	catTL.from($catInit, 0.1, {
+		bottom: "0"
+	}).to($catInit, 0.3, {
+		bottom: "100px",
+		onStart: function(){
+			$catBg.css("left","-1200px")
+		},
+		onComplete: function(){
+			TweenMax.to($wall, 0.1, {
+				top: "-20px"
+			});
+			TweenMax.to($fishInit, 0.3, {
+				bottom: "100px"
+			});
+		}
+	}, "+=0.2").to($catInit, 0.3, {
+		bottom: "0",
+		onStart: function(){
+			$catBg.css("left","0");
+		},
+		onComplete: function(){
+			TweenMax.to($wall, 0.1, {
+				top: "0"
+			});
+			TweenMax.to($fishInit, 0.5, {
+				bottom: "50px",
+				onComplete: function(){
+					var fish = parseInt($fish.attr('data-fish'));
+					fish +=1;
+					$fish.html('x '+fish);
+					$fish.attr('data-fish', fish);
+				}
+			});
+		}
+
+	});
+	
+	// window.addEventListener("DOMContentLoaded", function(e){
+	// 	start = Math.round(new Date().getTime()/1000);
+	// });
+	window.addEventListener("load", function(e) {
+		// end = Math.round(e.timeStamp/1000);
+		preload();
+	});
+	function preload(){
+		percent +=2;
+		if(percent <= 98){
+			setTimeout("preload()", 100);
+		}else{
+			$wall.addClass('wall-enable');
+			catTL.pause();
+			TweenMax.to($wall, 0.3, {
+				visibility: 'hidden',
+				delay: 0.5,
+				onComplete: function(){
+					tl.to($catInit, 1, {
+						yPercent: 500,
+						onComplete: function(){
+							$init.remove();
+							TweenMax.to($stage, 0.1, {
+								opacity: "1",
+								onComplete: function(){
+									$content.attr('class','');
+									stage();
+								}
+							})
+						}
+					});
+				}
+			});
+		}
+	}
+
+	function stage(){
+		var $wallStage = $stage.find('.wall');
+		var $tree = $stage.find('.tree');
+		TweenMax.to($catStage, 1, {
+			bottom: "80px"
+		});
+		var tl1 = new TimelineLite({
+            paused: true,
+            onUpdate: ''
+        });
+        tl1.from($tree, 0.5, {
+	        left: '+=750%'
+	    });
+	    // doScroll(tl);
+        $(window).scroll(function (e) {
+	        doScroll(tl1);
+	        catRun($catStage);
+	    });
+	}
+
+	function doScroll(tl1){
+    	var scrollTop = $(window).scrollTop();
+        var docHeight = $(document).height();
+        var winHeight = $(window).height();
+        scrollPercent = scrollTop / (docHeight - winHeight);
+        var scrollPercentRounded = Math.round(scrollPercent * 100) / 100;
+        $('#scrollPercentLabel>span').html(scrollPercentRounded);
+        tl.progress(scrollPercent).pause();
+    }
+
+    function catRun(cat){
+    	var catBg = cat.find('.cat-list');
+    	var tl = new TimelineMax({});
+    	// tl.from(cat,0.1,{
+    	// 	bottom: "80px",
+    	// }).to(cat,0.3,{
+    	// 	bottom: "82px",
+    	// 	onStart: function(){
+    	// 		catBg.css("left","-120px");
+    	// 	}
+    	// }, "+=0.2").to(cat,0.3,{
+    	// 	bottom: "80px",
+    	// 	onStart: function(){
+    	// 		catBg.css("left","-240px");
+    	// 	}
+    	// });
+		tl.form(cat, 0.3, {
+			bottom: "80px"
+		});
+    	return tl;
+    }
+</script>
+</body>
+</html>

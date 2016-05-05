@@ -6256,7 +6256,7 @@ body {
 }
 .stage .wall {
   position: absolute;
-  width: 700%;
+  width: 7680px;
   left: 150%;
   height: 300px;
   bottom: 280px;
@@ -6397,7 +6397,7 @@ body {
 }
 .stage .pipe {
   position: absolute;
-  width: 700%;
+  width: 4268px;
   left: 0;
   height: 400px;
   bottom: 76px;
@@ -6478,7 +6478,7 @@ body {
   background-size: 80px auto;
 }
 .stage .tree {
-  width: 700%;
+  width: 9658px;
   height: 100px;
   position: absolute;
   bottom: 76px;
