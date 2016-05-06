@@ -4,5 +4,5 @@ console.log = console.log || function(){};
 // 输出调试信息
 require.debug = false;
 require.config({
-	baseUrl : require.rootUrl + 'src/js/'
+	baseUrl : 'src/js/'
 });
