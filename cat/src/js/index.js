@@ -4,8 +4,8 @@ require([
 ], function(Init, stage){
 	new Vue({
 		el: '#content',
-		created: function(){
-			console.log(this);
+		ready: function(){
+			// console.log('ready',this.$el);
 		}
 	});
 });
