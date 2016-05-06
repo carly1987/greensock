@@ -1,7 +1,8 @@
-new Vue({
-	mixins: [],
-	el: '#init',
-	method: {
-		
-	}
+define([
+	
+], function(){
+	var Init = new Vue({
+		el: '#init'
+	});
+	return Init;
 });

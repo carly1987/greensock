@@ -24,7 +24,7 @@ var src = {
 }
 
 var js = {
-  lib: ['src/js/lib/jquery-2.2.3.min.js', 'src/js/lib/TweenMax.min.js', 'src/js/lib/vue.js'],
+  lib: ['src/js/lib/jquery-2.2.3.min.js', 'src/js/lib/TweenMax.min.js', 'src/js/lib/vue.js', 'src/js/lib/oz.js', 'src/js/lib/config.js'],
   main: ['src/js/index.js', 'src/js/main.js']
 }
 

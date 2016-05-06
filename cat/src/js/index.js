@@ -1,13 +1,11 @@
-new Vue({
-	mixins: ['index'],
-	el: '#content',
-	data: {
-
-	},
-	method: {
-
-	},
-	init: {
-		console.log('init');
-	}
+require([
+	'init',
+	'stage'
+], function(Init, stage){
+	new Vue({
+		el: '#content',
+		created: function(){
+			console.log(this);
+		}
+	});
 });
