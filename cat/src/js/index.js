@@ -1,11 +1,11 @@
 require([
-	'init',
-	'stage'
-], function(Init, stage){
+	'init'
+], function(Init){
+	var wall = $('.stage .wall .wall-6')[0];
 	new Vue({
 		el: '#content',
 		ready: function(){
-			// console.log('ready',this.$el);
+			
 		}
 	});
 });

@@ -63,8 +63,8 @@ gulp.task('css', function () {
         .pipe(gulp.dest('./build/css'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
-        .pipe(gulp.dest('./dist/css'))
-        .pipe(notify({ message: 'css is done!' }));
+        .pipe(gulp.dest('./dist/css'));
+        // .pipe(notify({ message: 'css is done!' }));
 });
 
 
@@ -75,15 +75,15 @@ gulp.task('js', function () {
       .pipe(gulp.dest('./build/js/'))
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
-      .pipe(gulp.dest('./dist/js'))
-      .pipe(notify({ message: 'libJS is done!' }));
+      .pipe(gulp.dest('./dist/js'));
+      // .pipe(notify({ message: 'libJS is done!' }));
     gulp.src(js.main)
       .pipe(connect.reload())
       .pipe(gulp.dest('./build/js/'))
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
-      .pipe(gulp.dest('./dist/js'))
-      .pipe(notify({ message: 'mainJS is done!' }));
+      .pipe(gulp.dest('./dist/js'));
+      // .pipe(notify({ message: 'mainJS is done!' }));
 });
 
 gulp.task('img', function() {
@@ -91,8 +91,8 @@ gulp.task('img', function() {
     .pipe(connect.reload())
     .pipe(gulp.dest('./build/img'))
     .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
-    .pipe(gulp.dest('./dist/img'))
-    .pipe(notify({ message: 'img is done!' }));
+    .pipe(gulp.dest('./dist/img'));
+    // .pipe(notify({ message: 'img is done!' }));
 });
 
 gulp.task('html', function () {

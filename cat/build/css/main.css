@@ -5947,8 +5947,8 @@ body {
   width: 200px;
   height: 200px;
   margin-left: -100px;
-  background: url('../img/cats.png') no-repeat 0 0;
-  background-size: 1600px auto;
+  background: url('../img/cats.png?000') no-repeat 0 0;
+  background-size: 1800px auto;
 }
 .fish {
   display: block;
@@ -5969,14 +5969,20 @@ body {
   width: 54px;
   height: 52px;
   background: url('../img/demon.png') no-repeat center center;
-  position: absolute;
+  position: fixed;
   bottom: 80px;
-  left: 80%;
-  zoom: 1;
-  filter: alpha(opacity=0);
-  -webkit-opacity: 0;
-  -moz-opacity: 0;
-  opacity: 0;
+  left: 100%;
+  z-index: 1;
+}
+.mushroom {
+  width: 52px;
+  height: 52px;
+  background: url('../img/mushroom.png') no-repeat center center;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  z-index: -1;
+  margin-left: -26px;
 }
 .wallText {
   display: block;
@@ -5995,6 +6001,7 @@ body {
   width: 100%;
   height: auto;
   bottom: 100px;
+  left: 0;
   line-height: 1em;
   color: #005d9b;
   font-weight: bold;
@@ -6188,7 +6195,7 @@ body {
 }
 .init .cat {
   bottom: 0;
-  background-size: 960px auto;
+  background-size: 1080px auto;
   width: 120px;
   height: 120px;
   margin-left: -60px;
@@ -6252,7 +6259,8 @@ body {
   width: 120px;
   height: 120px;
   z-index: 1;
-  background-size: 960px auto;
+  background-size: 1080px auto;
+  position: fixed;
 }
 .stage .wall {
   position: absolute;
@@ -6395,10 +6403,13 @@ body {
   bottom: 40px;
   background: url('../img/wallA.png') no-repeat center bottom;
 }
+.stage .wall .wall-enable {
+  background-image: url('../img/squareB.png');
+}
 .stage .pipe {
   position: absolute;
-  width: 4268px;
-  left: 0;
+  width: 2968px;
+  left: 230%;
   height: 400px;
   bottom: 76px;
   z-index: 2;
@@ -6417,34 +6428,38 @@ body {
   position: absolute;
   left: 50%;
   margin-left: -57px;
+  z-index: -1;
 }
 .stage .pipe .pipe-1 {
   background-position: center 178px;
-  left: 1500px;
+  left: 0px;
 }
 .stage .pipe .pipe-1 > span {
   bottom: 222px;
+  bottom: 0;
   background: url('../img/ie.png') no-repeat center bottom;
 }
 .stage .pipe .pipe-2 {
   background-position: center 120px;
-  left: 2200px;
+  left: 1000px;
 }
 .stage .pipe .pipe-2 > span {
   bottom: 280px;
+  bottom: 0;
   background: url('../img/firework.png') no-repeat center bottom;
 }
 .stage .pipe .pipe-3 {
   background-position: center 48px;
-  left: 2800px;
+  left: 1800px;
 }
 .stage .pipe .pipe-3 > span {
   bottom: 352px;
+  bottom: 0;
   background: url('../img/chrome.png') no-repeat center bottom;
 }
 .stage .pipe .pipe-4 {
   background-position: center 190px;
-  left: 4100px;
+  left: 2800px;
 }
 .stage .clound {
   width: 100%;
@@ -6495,4 +6510,107 @@ body {
   left: 0;
   bottom: 0;
   z-index: 3;
+}
+.subStage {
+  background: #3A2626;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+}
+.subStage .cat {
+  bottom: 100%;
+  left: 200px;
+  width: 120px;
+  height: 120px;
+  z-index: 1;
+  background-size: 1080px auto;
+}
+.subStage .wall {
+  position: absolute;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  bottom: 0;
+}
+.subStage .wall > div[class*="wall-"] {
+  background: url('../img/wallB.png');
+  z-index: 0;
+}
+.subStage .wall .wall-1 {
+  width: 80px;
+  height: 100%;
+}
+.subStage .wall .wall-2 {
+  width: 80%;
+  height: 80px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.subStage .wall .wall-3 {
+  width: 80%;
+  height: 240px;
+  position: absolute;
+  right: 0;
+  bottom: 82px;
+}
+.subStage .wall .software {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100%;
+  z-index: -1;
+  padding: 80px 0 322px 0;
+  display: table;
+}
+.subStage .wall .software li {
+  display: table-row;
+  width: 100%;
+}
+.subStage .wall .software li div {
+  display: table-cell;
+  width: 25%;
+}
+.subStage .wall .software div {
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.subStage .wall .software div.flash {
+  background-image: url('../img/flash.png');
+}
+.subStage .wall .software div.ai {
+  background-image: url('../img/ai.png');
+}
+.subStage .wall .software div.ps {
+  background-image: url('../img/ps.png');
+}
+.subStage .wall .software div.sketch {
+  background-image: url('../img/sketch.png');
+}
+.subStage .wall .software div.dreamwaver {
+  background-image: url('../img/dreamwaver.png');
+}
+.subStage .wall .software div.webstorm {
+  background-image: url('../img/webstorm.png');
+}
+.subStage .wall .software div.sublime {
+  background-image: url('../img/sublime.png');
+}
+.subStage .wall .software div.xcode {
+  background-image: url('../img/xcode.png');
+}
+.subStage .bg-stone {
+  background: url('../img/bg-stone-sub.png');
+  height: 82px;
+  width: 100%;
+  background-size: 40px 40px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
 }

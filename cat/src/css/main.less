@@ -13,22 +13,25 @@ body{
 	width: 200px;
 	height: 200px;
 	margin-left: -100px;
-	background: url('@{imgPath}cats.png') no-repeat 0 0;
-	background-size: 1600px auto;
+	background: url('@{imgPath}cats.png?000') no-repeat 0 0;
+	background-size: 1800px auto;
 }
 .fish{
 	display: block; width: 100%; height: 30px; line-height: 30px; position: absolute; bottom: 50px; left: 0; padding-left: 56px; background: url('@{imgPath}fish.png') no-repeat center center; background-size: auto 15px; font-style: normal; color: #fff; z-index: -1;
 }
-.demon{ width: 54px; height: 52px; background: url('@{imgPath}demon.png') no-repeat center center; position: absolute; bottom: 80px; left: 80%; .opacity(0);}
+.demon{ width: 54px; height: 52px; background: url('@{imgPath}demon.png') no-repeat center center; position: fixed; bottom: 80px; left: 100%; z-index: 1;}
+.mushroom{ width: 52px; height: 52px; background: url('@{imgPath}mushroom.png') no-repeat center center; position: absolute; bottom: 2px; left: 50%; z-index: -1; margin-left: -26px;}
 .wallText{
 	display: block; width: 80px; height: 80px; position: absolute; bottom: 0; left: 0; text-align: center; line-height: 80px; font-size: 2rem;
 }
+
 .carly{
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  height: auto;
-  bottom: 100px;
+	text-align: center;
+	position: absolute;
+	width: 100%;
+	height: auto;
+	bottom: 100px;
+	left: 0;
 	line-height: 1em;
 	color: #005d9b;
 	font-weight:bold;
@@ -99,11 +102,11 @@ width: 300px; left: -30px; top: 230px; z-index: -1;
 		width: 80px; height: 80px; position: absolute; left: 50%; top: 0; overflow: visible; margin: 0 0 0 -40px;
 		background: url('@{imgPath}squareA.png') no-repeat center bottom;
 		&.wall-enable{background-image: url('@{imgPath}squareB.png');}
-		span{.wallText;}
+		span{.wallText;}  
 		em{.fish;}
 	}
 	.cat{
-		bottom: 0; background-size: 960px auto;	width: 120px; height: 120px; margin-left: -60px;
+		bottom: 0; background-size: 1080px auto;	width: 120px; height: 120px; margin-left: -60px;
 	}
 	.clound{
 		position: absolute;
@@ -154,7 +157,7 @@ width: 300px; left: -30px; top: 230px; z-index: -1;
 	overflow: hidden;
 	.opacity(0);
 	.cat{
-		bottom: 100%; width: 120px; height: 120px; z-index: 1; background-size: 960px auto;
+		bottom: 100%; width: 120px; height: 120px; z-index: 1; background-size: 1080px auto; position: fixed;
 	}
 	.wall{
 		position: absolute; width: 7680px; left: 150%; height: 300px; bottom:280px; z-index: 1;
@@ -243,26 +246,27 @@ width: 300px; left: -30px; top: 230px; z-index: -1;
 			width: 80px; left: 6400px; bottom: 40px;
 			background: url('@{imgPath}wallA.png') no-repeat center bottom;
 		}
+		.wall-enable{background-image: url('@{imgPath}squareB.png');}
 	}
 	.pipe{
-		position: absolute; width: 4268px; left: 0; height: 400px; bottom:76px; z-index: 2;
+		position: absolute; width: 2968px; left: 230%; height: 400px; bottom:76px; z-index: 2;
 		>div{
 			position: absolute; height: 100%; bottom: 0; width: 168px;
 			background: url('@{imgPath}pipe.png') no-repeat;
 			>span{
-				display: block; width: 114px; height: 114px; position: absolute; left: 50%; margin-left: -57px;
+				display: block; width: 114px; height: 114px; position: absolute; left: 50%; margin-left: -57px; z-index: -1;
 			}
 		}
-		.pipe-1{background-position: center 178px; left: 1500px;
-			>span{bottom: 222px; background: url('@{imgPath}ie.png') no-repeat center bottom;}
+		.pipe-1{background-position: center 178px; left: 0px;
+			>span{bottom: 222px; bottom:0; background: url('@{imgPath}ie.png') no-repeat center bottom;}
 		}
-		.pipe-2{background-position: center 120px; left: 2200px;
-			>span{bottom: 280px; background: url('@{imgPath}firework.png') no-repeat center bottom;}
+		.pipe-2{background-position: center 120px; left: 1000px;
+			>span{bottom: 280px; bottom:0; background: url('@{imgPath}firework.png') no-repeat center bottom;}
 		}
-		.pipe-3{background-position: center 48px; left: 2800px;
-			>span{bottom: 352px; background: url('@{imgPath}chrome.png') no-repeat center bottom;}
+		.pipe-3{background-position: center 48px; left: 1800px;
+			>span{bottom: 352px; bottom:0; background: url('@{imgPath}chrome.png') no-repeat center bottom;}
 		}
-		.pipe-4{background-position: center 190px; left: 4100px;}
+		.pipe-4{background-position: center 190px; left: 2800px;}
 	}
 	.clound{
 		width: 100%; height: 60px; position: absolute; top:5%; left: 0; z-index: 0;
@@ -314,4 +318,93 @@ width: 300px; left: -30px; top: 230px; z-index: -1;
 		z-index: 3;
 	}
 }
-
+.subStage{
+	background:#3A2626; width: 100%; height: 100%; position: fixed; top:0; left: 0; z-index: 10; display: none;
+	.cat{
+		bottom:100%; left: 200px;width: 120px; height: 120px; z-index: 1; background-size: 1080px auto;
+	}
+	.wall{
+		position: absolute;
+		left: 0;
+		width: 80%;
+		height: 100%;
+		bottom: 0;
+		>div[class*="wall-"]{
+			background: url('@{imgPath}wallB.png');
+			z-index: 0;
+		}
+		.wall-1{
+			width: 80px;
+			height: 100%;
+			
+		}
+		.wall-2{
+			width: 80%;
+			height: 80px;
+			position: absolute;
+			right: 0;
+			top:0;
+		}
+		.wall-3{
+			width: 80%;
+			height: 240px;
+			position: absolute;
+			right: 0;
+			bottom:82px;
+		}
+		.software{
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 80%;
+			height: 100%;
+			z-index: -1;
+			padding: 80px 0 322px 0;
+			display: table;
+			li{
+				display: table-row; width: 100%;
+				div{
+					display: table-cell;
+					width: 25%;
+				}
+			}
+			div{
+				background-repeat: no-repeat; background-position: center center;
+				&.flash{
+					background-image: url('@{imgPath}flash.png');
+				}
+				&.ai{
+					background-image: url('@{imgPath}ai.png');
+				}
+				&.ps{
+					background-image: url('@{imgPath}ps.png');
+				}
+				&.sketch{
+					background-image: url('@{imgPath}sketch.png');
+				}
+				&.dreamwaver{
+					background-image: url('@{imgPath}dreamwaver.png');
+				}
+				&.webstorm{
+					background-image: url('@{imgPath}webstorm.png');
+				}
+				&.sublime{
+					background-image: url('@{imgPath}sublime.png');
+				}
+				&.xcode{
+					background-image: url('@{imgPath}xcode.png');
+				}
+			}
+		}
+	}
+	.bg-stone{
+		background: url('@{imgPath}bg-stone-sub.png');
+		height: 82px;
+		width: 100%;
+		background-size: 40px 40px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		z-index: 1;
+	}
+}
